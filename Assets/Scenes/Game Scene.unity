@@ -3155,7 +3155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _knivesPanel: {fileID: 1176805691}
   _knifeLivesIcon: {fileID: 1919040981459275726, guid: 21e8e7dd86cf6d0429874e15e23260bf, type: 3}
-  _usedKnifeColor: {r: 1, g: 1, b: 1, a: 0.39215687}
+  _usedKnifeColor: {r: 1, g: 1, b: 1, a: 0.3529412}
 --- !u!4 &1512225691
 Transform:
   m_ObjectHideFlags: 0
@@ -3186,9 +3186,9 @@ MonoBehaviour:
   _settingsScreen: {fileID: 995438688}
   _gameOverScreen: {fileID: 1850245435}
   _gameWonScreen: {fileID: 1033315788}
-  _knifeSpawnPosition: {x: 0, y: -3.5}
+  _knifeSpawnPosition: {x: 0, y: 50}
   _knifePrefab: {fileID: 4073162166693005312, guid: 46201af663d8be74192ade7c558a1650, type: 3}
-  _knifeCount: 7
+  _knifeCount: 0
   _gameLevel: 1
   _isGameOver: 0
   _inGame: 0

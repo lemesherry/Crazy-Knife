@@ -10,33 +10,27 @@ using UnityEngine;
 #endif
 
 
-[RequireComponent(typeof(Game_UI_Handler))]
+[RequireComponent(typeof( Game_UI_Handler ))]
 public class Game_Manager : MonoBehaviour {
 
     public static Game_Manager Instance  { get; private set; }
     public Game_UI_Handler _gameUIHandler { get; private set; }
 
-    [Header( "Refrences" )]
     [SerializeField] GameObject _titleScreen;
     [SerializeField] GameObject _settingsScreen;
     [SerializeField] GameObject _gameOverScreen;
     [SerializeField] GameObject _gameWonScreen;
 
-
-    [Header( "Knife Spawning" )]
     [SerializeField] Vector2 _knifeSpawnPosition;
     [SerializeField] GameObject _knifePrefab;
-
-    [HideInInspector]
-    public int _knifeCount;
-    [HideInInspector]
-    public int _gameLevel = 1;
-    [HideInInspector]
-    public bool _isGameOver;
-    [HideInInspector]
-    public bool _inGame;
-    private bool _isMuted;
     private AudioSource _gameAudio;
+
+    // [HideInInspector] 
+    public int _knifeCount;
+    [HideInInspector] public int _gameLevel;
+    [HideInInspector] public bool _isGameOver;
+    [HideInInspector] public bool _inGame;
+    [HideInInspector] private bool _isMuted;
 
     private void Awake() {
         
@@ -46,12 +40,7 @@ public class Game_Manager : MonoBehaviour {
         _gameUIHandler = GetComponent<Game_UI_Handler> ();
         // ★彡[ Getting Audio Source component ]彡★
         _gameAudio = GetComponent<AudioSource> ();
-    }
-
-    private void Start() {
-        
-        // ★彡[ Getting random number of kinves count when the game starts ]彡★
-        // _knifeCount = UnityEngine.Random.Range( 5, 10 );
+        // _knifeCount = 5;
     }
 
     public void OnSuccessfulKnifeHit() {
@@ -70,7 +59,7 @@ public class Game_Manager : MonoBehaviour {
         }
     }
 
-    private void SpawnKnife() {
+    public void SpawnKnife() {
 
         // ★彡[ Decreasing the number of knives ]彡★
         _knifeCount--;
@@ -110,9 +99,11 @@ public class Game_Manager : MonoBehaviour {
 
     public void StartGame( int knifeCount ) {
 
+        // _gameLevel = 1;
+        // LevelSystem();
         _isGameOver = false;
         _inGame = true;
-        _knifeCount = knifeCount;
+        _knifeCount = 5;
 
         _titleScreen.SetActive( false );
         // ★彡[ Spawning knives when games starts ]彡★
@@ -124,6 +115,7 @@ public class Game_Manager : MonoBehaviour {
         if( _settingsScreen.activeInHierarchy == true )
             _settingsScreen.SetActive( false );
     }
+
 
     public void SettingsMenu() {
 
@@ -161,6 +153,10 @@ public class Game_Manager : MonoBehaviour {
 
     public void LevelSystem() {
 
+        if( _gameLevel == 1 ) {
+
+            StartGame( 5 );
+        }
         if( _gameLevel == 2 ) {
 
             StartGame( 8 );
@@ -179,3 +175,4 @@ public class Game_Manager : MonoBehaviour {
         }
     }
 }
+

@@ -40,9 +40,12 @@ public class Knife_Behaviour_Handler : MonoBehaviour {
             _knifeRigidbody.AddForce( _shootForce, ForceMode2D.Impulse );
             // ★彡[ Setting the gravity scale back to normal to let the knife get affected by gravity ]彡★
             _knifeRigidbody.gravityScale = 1;
-            // ★彡[ Decrementing the knife count ]彡★
-            Game_Manager.Instance._gameUIHandler.DecreamentKnifeCount();
 
+            if( Game_Manager.Instance._knifeCount > 0 ) {
+
+                // ★彡[ Decrementing the knife count ]彡★
+                Game_Manager.Instance._gameUIHandler.DecreamentKnifeCount();
+            }
         }
     }
 
